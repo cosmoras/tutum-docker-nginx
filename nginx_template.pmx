@@ -1,0 +1,29 @@
+---
+name: nginx_template
+description: ''
+keywords: ''
+type: Apache
+documentation: ''
+images:
+- name: cosmoras_tutum-docker-nginx_latest
+  source: cosmoras/tutum-docker-nginx:latest
+  type: Default
+  ports:
+  - host_port: '80'
+    container_port: '80'
+    proto: TCP
+  - host_port: '443'
+    container_port: '443'
+    proto: TCP
+  environment:
+  - variable: t
+    value: t
+  volumes:
+  - host_path: "/home/core/nginx/log-dir"
+    container_path: "/var/log/nginx"
+  - host_path: "/home/core/nginx/html-dir"
+    container_path: "/app"
+  - host_path: "/home/core/nginx/certs-dir"
+    container_path: "/etc/nginx/certs"
+  - host_path: "/home/core/nginx/sites-enabled"
+    container_path: "/etc/nginx/sites-enabled"
